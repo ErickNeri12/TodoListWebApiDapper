@@ -41,16 +41,33 @@ namespace TodoWebApi.Controllers
             return Ok(item);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateItemAsync(TodoItem item)
+        [HttpGet("{id}", Name = "ItemById")]
+        public async Task<IActionResult> GetOneItemIdAsync(int id)
         {
-            await _todoItemRepo.CreateItemAsync(item);
-            return Ok();
+            var item = await _todoItemRepo.GetOneItemIdAsync(id);
+            if(item is null)
+            {
+                return NotFound();
+            }
+            return Ok(item);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<TodoItem>> CreateItemAsync([FromBody]TodoItem item)
+        {
+            var createdItem = await _todoItemRepo.CreateItemAsync(item);
+
+            return CreatedAtRoute("ItemById", new {id = createdItem.Id }, createdItem);
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateItemAsync(TodoItem item)
         {
+            var itemExist = await _todoItemRepo.GetOneItemIdAsync(item.Id);
+            if(itemExist is null)
+            {
+                return NotFound();
+            }
             await _todoItemRepo.UpdateItemAsync(item);
             return Ok();
         }
@@ -58,7 +75,13 @@ namespace TodoWebApi.Controllers
         [HttpDelete("{itemId}")]
         public async Task<IActionResult> DeleteItemAsync(int itemId)
         {
+            var item = await _todoItemRepo.GetOneItemIdAsync(itemId);
+            if(item is null)
+            {
+                return NotFound();
+            }
             await _todoItemRepo.DeleteItemAsync(itemId);
+
             return Ok();
         }
     }

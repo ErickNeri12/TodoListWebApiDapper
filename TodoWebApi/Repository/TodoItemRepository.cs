@@ -43,11 +43,23 @@ namespace TodoWebApi.Repository
             }
         }
 
+        //buscar por id
+        public async Task<TodoItem> GetOneItemIdAsync(int id)
+        {
+            var query = "SELECT * FROM items WHERE id = @Id";
+            using (var connection = _context.CreateConnection())
+            {
+                var item = await connection.QueryFirstOrDefaultAsync<TodoItem>(query, new { Id = id } );
+                return item;
+            }
+        }
+
         //Cria um item novo
-        public async Task CreateItemAsync(TodoItem item)
+        public async Task<TodoItem> CreateItemAsync(TodoItem item)
         {
             //não precisa passar o id porquê é uma PRIMARY KEY
-            var query = "INSERT INTO items(name_,isComplete) VALUES(@Name_,IsComplete)";  
+            var query = "INSERT INTO items(name_, isComplete) VALUES (@Name_, @IsComplete); SELECT LAST_INSERT_ID();";
+
 
             var parameters = new DynamicParameters();
             parameters.Add("name_", item.Name_, DbType.String); 
@@ -55,7 +67,11 @@ namespace TodoWebApi.Repository
 
             using(var connection = _context.CreateConnection())
             {
-                await connection.ExecuteAsync(query, parameters);
+                var id = await connection.QuerySingleAsync<int>(query, parameters);
+
+                var createdItem = new TodoItem { Id = id, Name_ = item.Name_, IsComplete = item.IsComplete};
+
+                return( createdItem );      
             }
         }
 

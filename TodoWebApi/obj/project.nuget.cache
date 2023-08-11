@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Ptpi11wDM/l3iB0GVweh43Zji88gvJ/HSJQVypJoAXQLQF1OKL2wmRLLV6aRvUt4wghB4Ago6VS78p5j/haM2Q==",
+  "dgSpecHash": "6neySyBf4pOr+he6CPSShWRZ88UoxmxcHnIokmR4UHyWAWVwvklwXIoEMyZ9czWdOfzHGprRxVl0gyDFQpbhkg==",
   "success": true,
   "projectFilePath": "C:\\Users\\erick\\OneDrive\\Documentos\\C#, .NET, ASP.NET, SQL\\TodoWebApi\\TodoWebApi\\TodoWebApi.csproj",
   "expectedPackageFiles": [
@@ -45,7 +45,11 @@
     "C:\\Users\\erick\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\erick\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\erick\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
-    "C:\\Users\\erick\\.nuget\\packages\\zstdsharp.port\\0.7.1\\zstdsharp.port.0.7.1.nupkg.sha512"
+    "C:\\Users\\erick\\.nuget\\packages\\zstdsharp.port\\0.7.1\\zstdsharp.port.0.7.1.nupkg.sha512",
+    "C:\\Users\\erick\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\erick\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\erick\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\erick\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
   ],
   "logs": []
 }
